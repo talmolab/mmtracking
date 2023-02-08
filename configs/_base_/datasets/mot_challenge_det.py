@@ -34,26 +34,26 @@ test_pipeline = [
             dict(type='Collect', keys=['img'])
         ])
 ]
-data_root = 'data/MOT17/'
+data_root = 'talmodata-smb/aadi/tracking_transformers/tracking_transformers/baselines/data/flies_13_coco/det/'
 data = dict(
-    samples_per_gpu=2,
+    samples_per_gpu=8,
     workers_per_gpu=2,
     train=dict(
         type=dataset_type,
-        ann_file=data_root + 'annotations/half-train_cocoformat.json',
+        ann_file=data_root + 'annotations/flies_13_train_cocov2.json',
         img_prefix=data_root + 'train',
-        classes=('pedestrian', ),
+        classes=('fly', ),
         pipeline=train_pipeline),
     val=dict(
         type=dataset_type,
-        ann_file=data_root + 'annotations/half-val_cocoformat.json',
+        ann_file=data_root + 'annotations/flies_13_val_cocov2.json',
         img_prefix=data_root + 'train',
-        classes=('pedestrian', ),
+        classes=('fly', ),
         pipeline=test_pipeline),
     test=dict(
         type=dataset_type,
-        ann_file=data_root + 'annotations/half-val_cocoformat.json',
+        ann_file=data_root + 'annotations/flies_13_test_coco_v2.json',
         img_prefix=data_root + 'train',
-        classes=('pedestrian', ),
+        classes=('fly', ),
         pipeline=test_pipeline))
 evaluation = dict(metric=['bbox'])

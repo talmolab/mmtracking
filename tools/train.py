@@ -80,7 +80,8 @@ def main():
     args = parse_args()
 
     cfg = Config.fromfile(args.config)
-
+    print(f'Config:\n{cfg.pretty_text}')
+    
     if cfg.get('USE_MMDET', False):
         from mmdet.apis import train_detector as train_model
         from mmdet.models import build_detector as build_model
